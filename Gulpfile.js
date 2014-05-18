@@ -12,7 +12,7 @@ gulp.task('less', function () {
   gulp.src(paths.lessOutput)
     .pipe(less())
     .pipe(prefix("last 1 version", "> 1%", "ie 8", "ie 7"))
-    .pipe(gulp.dest('./css'));
+    .pipe(gulp.dest('./public/css'));
 });
 
 gulp.task('watch', function() {
