@@ -19,5 +19,9 @@
     "gulp": "^3.6.2",
     "gulp-less": "^1.2.3",
     "gulp-autoprefixer": "0.0.7"
+  },
+  "dependencies": {
+    "express": "^4.2.0",
+    "body-parser": "^1.2.0"
   }
 }
