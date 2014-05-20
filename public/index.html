@@ -1,126 +1,26 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name=="viewport" content="width=device-width">
-	<link rel="stylesheet" href="css/style.css">
-	<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,900'>
-	 <script src="bower_components/jquery/dist/jquery.min.js"></script>
-	<script src="js/script.js"></script>
-	<title>Commonplace</title>
+  <meta charset="utf-8">
+  <meta name=="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,900'>
+   <script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+  <script src="js/script.js"></script>
+  <title>Commonplace</title>
 </head>
 <body>
 
+<div id="main">Loading...</div>
 
-<section class="launcher">
-	<h1><b>Commonplace</b></h1>
-	<span class="launcher-line"></span>
-	<section class="launcher-btns">
-		<button class="text is-hidden">Text</button>
-		<button class="image is-hidden">Image</button>
-		<button class="quote is-hidden">Quote</button>
-		<button class="link is-hidden">Link</button>
-		<button class="video is-hidden">Video</button>
-	</section>
+  <div class="is-hidden">
+    Text: Title, Content
+    Image: URL, caption
+    Quote: Quote, Source, Notes
+    Link: URL, title, notes
+    Video: Autodetect YouTube or Vimeo uploads, or paste in embed code. Notes.
+  </div>
 </section>
-
-<section class="post-box">
-	<button class="post-back">Back</button>
-
-	<!-- Text post form -->
-	<form class="post-text">
-		<div>
-			<label for="text-title">Title</label>
-			<input type="text" id="text-title" placeholder="Title">
-		</div>
-		<div>
-			<label for="text-message">Post</label>
-			<textarea id="text-message" placeholder="Write your post here"></textarea>
-		</div>
-		<button class="post-submit">Post</button>
-	</form>
-
-	<!-- Image post form -->
-	<form class="post-image">
-		<div>
-			<label for="image-file">Upload a Photo</label>
-			<div class="image-upload-box">
-				<div class="image-upload-input">
-					<input type="file" id="image-file">
-					<span>Choose a File</span>
-				</div>
-				<b>Upload a Photo</b>
-			</div>
-		</div>
-		<div>
-			<label for="image-caption">Caption</label>
-			<textarea id="image-caption" placeholder="Write a description here"></textarea>
-		</div>
-		<button class="post-submit">Post</button>
-	</form>
-
-	<!-- Quote post form -->
-	<form class="post-quote">
-		<div>
-			<label for="quote-body">Quote</label>
-			<textarea id="quote-body" placeholder="Quote"></textarea>
-		</div>
-		<div class="post-attr-box">
-			<span>&mdash;</span>
-			<label for="quote-source">Source</label>
-			<input type="text" id="quote-source" placeholder="Source">
-		</div>
-		<div>
-			<label for="quote-notes">Notes</label>
-			<textarea id="quote-notes" placeholder="Notes"></textarea>
-		</div>
-		<button class="post-submit">Post</button>
-	</form>
-
-	<!-- Link post form -->
-	<form class="post-link">
-		<div>
-			<label for="link-url">URL</label>
-			<input type="text" id="link-url" placeholder="URL">
-		</div>
-		<div>
-			<label for="link-title">Title</label>
-			<input type="text" id="link-title" placeholder="Title">
-		</div>
-		<div>
-			<label for="link-notes">Notes</label>
-			<textarea id="link-notes" placeholder="Notes"></textarea>
-		</div>
-		<button class="post-submit">Post</button>
-	</form>
-
-	<!-- Link post form -->
-	<form class="post-video">
-
-		<div>
-			<label for="video-embed">Video Source</label>
-			<textarea id="video-embed" placeholder="Enter a Youtube / Vimeo URL or embed code"></textarea>
-		</div>
-
-		<div class="post-attr-box">
-			<span>&mdash;</span>
-			<label for="video-source">Title</label>
-			<input type="text" id="video-source" placeholder="Title / Creator">
-		</div>
-
-		<div>
-			<label for="video-notes">Notes</label>
-			<textarea id="video-notes" placeholder="Notes"></textarea>
-		</div>
-		<button class="post-submit">Post</button>
-	</form>
-
-	<div class="is-hidden">
-		Text: Title, Content
-		Image: URL, caption
-		Quote: Quote, Source, Notes
-		Link: URL, title, notes
-		Video: Autodetect YouTube or Vimeo uploads, or paste in embed code. Notes.
-	</div>
-</section>
+<script src="js/app.js"></script>
 </body></html>
