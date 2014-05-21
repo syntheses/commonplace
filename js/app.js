@@ -3,6 +3,7 @@
 */
 
 var React = require('react');
+var reqwest = require('reqwest');
 
 var Launcher = require('./launcher');
 
@@ -28,12 +29,19 @@ var App = React.createClass({
   },
 
   handleForm: function(form) {
-    console.log(form);
+    var self = this;
+    reqwest({
+      url: 'posts',
+      method: 'post',
+      data: form
+    }).then(function(resp){
+      if (resp.posted)
+        self.goBack();
+    });
 
   },
 
   goBack: function() {
-    console.log('go back');
 
     this.setState({type: null});
     document.body.addEventListener('animationend', function(){

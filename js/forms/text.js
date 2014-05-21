@@ -9,6 +9,7 @@ module.exports =
     handleForm: function(e) {
       e.preventDefault();
       this.props.handleForm({
+        type: 'text',
         title: this.refs.title.getDOMNode().value,
         message: this.refs.message.getDOMNode().value
       });
