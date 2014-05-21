@@ -27,7 +27,14 @@
     "express": "^4.2.0",
     "body-parser": "^1.2.0",
     "react": "^0.10.0",
-    "reactify": "^0.13.1"
+    "reactify": "^0.13.1",
+    "reqwest": "^1.1.0",
+    "handlebars": "^2.0.0-alpha.4",
+    "moment": "^2.6.0"
   },
-  "browserify": { "transform": [ "reactify" ] }
+  "browserify": {
+    "transform": [
+      "reactify"
+    ]
+  }
 }

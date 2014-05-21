@@ -54,7 +54,7 @@ app.post('/posts', function(req, res) {
     if (err)
       console.log(err);
     else {
-      cp.exec('jekyll build', {cwd: '../com'}, function(error, stdout, stderr) {
+      cp.exec('jekyll build', {cwd: jekyllPath}, function(error, stdout, stderr) {
         res.send({posted: true});
       })
     }
