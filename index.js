@@ -5,6 +5,7 @@ var cp = require('child_process');
 
 var Handlebars = require('handlebars');
 var moment = require('moment');
+var slug = require('slug');
 
 var config = require('./config.json')
 
@@ -37,10 +38,10 @@ app = express();
 
 app.use(bodyParser());
 
-app.use(express.static('./public'))
+app.use(express.static('./public'));
 
 app.get('/', function(req, res) {
-  res.send('public/index.html')
+  res.send('public/index.html');
 });
 
 app.get('/posts', function(req, res) {})
@@ -50,7 +51,7 @@ app.post('/posts', function(req, res) {
   req.body.date = new Date();
   var post = templates[req.body.type](req.body);
 
-  fs.writeFile(postsPath + moment(new Date()).format('YYYY-MM-DD') + '-' + req.body.title.split(' ').join('-') + '.md', post, function(err) {
+  fs.writeFile(postsPath + moment(new Date()).format('YYYY-MM-DD') + '-' + slug(req.body.title) + '.md', post, function(err) {
     if (err)
       console.log(err);
     else {
@@ -62,6 +63,6 @@ app.post('/posts', function(req, res) {
 
 });
 
-app.get('/posts/:title', function(req, res) {})
+app.get('/posts/:title', function(req, res) {});
 
 app.listen(3000);
