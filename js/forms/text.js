@@ -19,11 +19,11 @@ module.exports =
       return (
         <form className="post-text" onSubmit={this.handleForm}>
           <div>
-            <label for="text-title">Title</label>
+            <label htmlFor="text-title">Title</label>
             <input type="text" id="text-title" ref="title" placeholder="Title"></input>
           </div>
           <div>
-            <label for="text-message">Post</label>
+            <label htmlFor="text-message">Post</label>
             <textarea id="text-message" ref="message" placeholder="Write your post here"></textarea>
           </div>
           <button className="post-submit">Post</button>

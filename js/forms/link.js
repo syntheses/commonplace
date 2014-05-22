@@ -18,20 +18,20 @@ module.exports =
 
     render: function () {
       return (
-        <form class="post-link" onSubmit={this.handleForm}>
+        <form className="post-link" onSubmit={this.handleForm}>
           <div>
-            <label for="link-url">URL</label>
+            <label htmlFor="link-url">URL</label>
             <input type="text" id="link-url" ref="url" placeholder="URL"></input>
           </div>
           <div>
-            <label for="link-title">Title</label>
+            <label htmlFor="link-title">Title</label>
             <input type="text" id="link-title" ref="title" placeholder="Title"></input>
           </div>
           <div>
-            <label for="link-notes">Notes</label>
+            <label htmlFor="link-notes">Notes</label>
             <textarea id="link-notes" ref="notes" placeholder="Notes"></textarea>
           </div>
-          <button class="post-submit" >Post</button>
+          <button className="post-submit" >Post</button>
         </form>
       );
     }

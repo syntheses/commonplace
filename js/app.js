@@ -28,12 +28,40 @@ var App = React.createClass({
     });
   },
 
-  handleForm: function(form) {
+  handleUpload: function(form, type, title) {
     var self = this;
+
+    var xhr = new XMLHttpRequest();
+
+    var formData = new FormData(form);
+
+    formData.append('type', type);
+    formData.append('title', title);
+
+    xhr.onload = function() {
+      try {
+        var resp = JSON.parse(this.responseText);
+        if (resp.posted)
+          self.goBack();
+      } catch (e) {
+        console.log(e);
+      }
+
+    };
+
+    xhr.open('POST', 'posts');
+
+    xhr.send(formData);
+  },
+
+  handleForm: function(data) {
+    var self = this;
+
     reqwest({
       url: 'posts',
       method: 'post',
-      data: form
+      type: 'json',
+      data: data
     }).then(function(resp){
       if (resp.posted)
         self.goBack();
@@ -46,7 +74,7 @@ var App = React.createClass({
     this.setState({type: null});
     document.body.addEventListener('animationend', function(){
       document.body.className = '';
-      this.removeEventListener('animationend');
+      document.body.removeEventListener('animationend', this);
     }, true);
 
     document.body.className = 'is-returning';
@@ -62,12 +90,13 @@ var App = React.createClass({
     } else {
 
         document.body.className = 'is-posting';
-        Form = Forms[this.state.type]
+        var Form = Forms[this.state.type]
+        var formHandler = this.state.type === 'image' ? this.handleUpload : this.handleForm
 
         return (
           <section className="post-box">
             <button className="post-back" onClick={this.goBack}>Back</button>
-            <Form handleForm={this.handleForm} />
+            <Form handleForm={formHandler} />
           </section>
         );
     }

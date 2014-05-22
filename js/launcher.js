@@ -8,8 +8,8 @@ var LauncherButton = require('./button');
 
 module.exports =
   React.createClass({
-    handleClick: function(type) {
-      this.props.handleClick(type);
+    handleClick: function(form) {
+      this.props.handleClick(form);
     },
     render: function() {
       return (
