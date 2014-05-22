@@ -2,8 +2,6 @@ var gulp = require('gulp');
 
 var source = require('vinyl-source-stream');
 var browserify = require('browserify');
-// var reactify = require('reactify');
-
 
 var less = require('gulp-less');
 var prefix = require('gulp-autoprefixer');
@@ -13,7 +11,6 @@ var paths = {
   less: './less/**/*.less',
   appJs: './js/app.js',
   js: './js/**/*.js'
-
 };
 
 gulp.task('less', function () {
@@ -28,7 +25,7 @@ gulp.task('browserify', function() {
 
   bundleStream
     .pipe(source(paths.appJs))
-    .pipe(gulp.dest('public'))
+    .pipe(gulp.dest('public'));
 })
 
 gulp.task('watch', function() {

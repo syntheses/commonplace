@@ -1,5 +1,8 @@
 var express = require('express');
+
 var bodyParser = require('body-parser');
+var formidable = require('formidable');
+
 var fs = require('fs');
 var cp = require('child_process');
 
@@ -7,11 +10,12 @@ var Handlebars = require('handlebars');
 var moment = require('moment');
 var slug = require('slug');
 
-var config = require('./config.json')
+var config = require('./config.json');
 
 var jekyllPath = config.jekyllPath || '.';
 
 var postsPath = jekyllPath + '/_posts/';
+var imagePath = jekyllPath + '/images/';
 
 templates = {};
 
@@ -36,17 +40,35 @@ fs.readFile('./output/image-post-output.hbs', function(err, data) {
 
 app = express();
 
-app.use(bodyParser());
-
 app.use(express.static('./public'));
 
-app.get('/', function(req, res) {
-  res.send('public/index.html');
-});
+app.use(bodyParser());
 
-app.get('/posts', function(req, res) {})
+function fileParser(req, res, next) {
+  var form = new formidable.IncomingForm();
 
-app.post('/posts', function(req, res) {
+  if (req.body.type)
+    next();
+
+  form.parse(req, function(err, fields, files) {
+
+    req.files = files;
+    req.body = fields;
+
+    req.body.img = slug(req.files.image.name);
+
+    fs.rename(req.files.image.path, imagePath + req.body.img, function(err) {
+      next();
+    });
+  });
+
+}
+
+app.get('/posts', function(req, res) {
+  console.log('posts');
+})
+
+app.post('/posts', fileParser, function(req, res) {
 
   req.body.date = new Date();
   var post = templates[req.body.type](req.body);
@@ -55,9 +77,10 @@ app.post('/posts', function(req, res) {
     if (err)
       console.log(err);
     else {
+      console.log('post made')
       cp.exec('jekyll build', {cwd: jekyllPath}, function(error, stdout, stderr) {
         res.send({posted: true});
-      })
+      });
     }
   });
 
