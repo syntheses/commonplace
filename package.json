@@ -1,0 +1,41 @@
+{
+  "name": "commonplace",
+  "version": "0.0.0",
+  "description": "commonplace ===========",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jrubenoff/commonplace.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/jrubenoff/commonplace/issues"
+  },
+  "homepage": "https://github.com/jrubenoff/commonplace",
+  "devDependencies": {
+    "gulp": "^3.6.2",
+    "gulp-less": "^1.2.3",
+    "gulp-autoprefixer": "0.0.7",
+    "vinyl-source-stream": "^0.1.1",
+    "browserify": "^4.1.5"
+  },
+  "dependencies": {
+    "express": "^4.2.0",
+    "body-parser": "^1.2.0",
+    "react": "^0.10.0",
+    "reactify": "^0.13.1",
+    "reqwest": "^1.1.0",
+    "handlebars": "^2.0.0-alpha.4",
+    "moment": "^2.6.0",
+    "slug": "^0.5.0",
+    "formidable": "^1.0.14"
+  },
+  "browserify": {
+    "transform": [
+      "reactify"
+    ]
+  }
+}
