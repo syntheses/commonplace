@@ -6,6 +6,15 @@ var slug = require('slug');
 var jekyllPath = require('../config.json').jekyllPath || '.';
 var imagePath = jekyllPath + '/images/';
 
+fs.exists(imagePath, function (exists) {
+  if (!exists) {
+    fs.mkdir(imagePath, function(err) {
+      if (err)
+        console.log(err);
+    });
+  }
+});
+
 module.exports = function(req, res, next) {
   var form = new formidable.IncomingForm();
 
