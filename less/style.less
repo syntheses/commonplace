@@ -168,9 +168,6 @@ h1 {
 	left: 50%;
 	margin-left: -19.75rem;
 	width: 39.5rem;
-	transform: translateY(14rem);
-	opacity: 0;
-	transition: transform 0.7s @easeOutQuint 0.1s, opacity 0.2s ease-out 0.1s;
 	h2 {
 		font-weight: 300;
 		font-size: 1.618rem;
@@ -392,7 +389,24 @@ textarea {
 		opacity: 0;
 	}
 	.post-box {
+		animation: post-box 0.6s @easeOutQuint;
+	}
+}
+
+@keyframes post-box {
+	0% {
+		transform: translateY(5rem);
+		opacity: 0;
+	}
+	10% {
+		transform: translateY(5rem);
+		opacity: 0;
+	}
+	40% {
 		opacity: 1;
+	}
+	100% {
 		transform: translateY(0);
 	}
+
 }
