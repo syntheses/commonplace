@@ -10,7 +10,7 @@ module.exports =
       this.props.handleClick(this.props.type);
     },
     render: function() {
-      var classes = this.props.type + " is-hidden";
+      var classes = this.props.type;
       return (
         <button className={classes} onClick={this.handleClick}>{this.props.text}</button>
       );

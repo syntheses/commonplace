@@ -6,8 +6,16 @@ var React = require('react');
 
 module.exports =
   React.createClass({
+    getInitialState: function () {
+      return {fileName: null};
+    },
     handleImage: function(e) {
-      //process image for preview display
+      if (e.target.files[0]) {
+        var file = e.target.files[0];
+        this.setState({fileName: file.name});
+      } else {
+        this.setState({fileName: null});
+      }
     },
 
     handleForm: function(e) {
@@ -15,6 +23,10 @@ module.exports =
       this.props.handleForm(this.refs.form.getDOMNode(), 'image', this.refs.caption.getDOMNode().value.slice(0,140));
     },
     render: function () {
+
+      var label = this.state.fileName ? this.state.fileName : 'Upload a Photo';
+
+
       return (
         <form className="post-image" onSubmit={this.handleForm} ref="form" encType="multipart/form-data">
           <div>
@@ -24,7 +36,7 @@ module.exports =
                 <input type="file" ref="image" name="image" id="image-file" onChange={this.handleImage} accept="image/*"></input>
                 <span>Choose a File</span>
               </div>
-              <b>Upload a Photo</b>
+              <b>{label}</b>
             </div>
           </div>
           <div>
