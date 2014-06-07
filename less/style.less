@@ -17,6 +17,8 @@ body {
 
 input, select, textarea {
 	background: @body-bg;
+	font-family: 'Gentium Book Basic', Georgia, serif;
+	.font-smoothing;
 }
 
 h1 {
@@ -204,20 +206,23 @@ input[type="text"] {
 .image-upload-box {
 	margin-top: 1.5rem;
 	b {
-		font-weight: 300;
+		font-family: 'Gentium Book Basic', Georgia, serif;
+		font-weight: normal;
+		color: #555;
 		margin-left: 1rem;
 		line-height: 3rem;
+		.font-smoothing;
 	}
 }
 
 .image-upload-input {
-	width: 8rem;
+	width: 9rem;
 	height: 3rem;
 	position: relative;
 	float: left;
 	span {
 		display: block;
-		font-size: 1rem;
+		font-size: 1.33rem;
 		line-height: 3rem;
 		background: #666;
 		border-radius: 3px;
@@ -364,7 +369,7 @@ textarea {
 
 .post-submit {
 	font-size: pow(1.618em, 2);
-	color: @white;
+	color: @body-bg;
 	font-weight: 300;
 	.font-smoothing;
 	border: 0;
