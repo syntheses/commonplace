@@ -126,7 +126,10 @@ h1 {
 		cursor: pointer;
 		transition: all 0.25s @easeOutQuint;
 		user-select: none;
-		animation: launchbuttons 0.4s @easeOutBack;
+		&.is-opening {
+			animation: launchbuttons 0.4s @easeOutBack;
+			opacity: 0;
+		}
 		text-align: left;
 		padding: 0 0.5em;
 		margin: 0 0 0 -0.5em;
