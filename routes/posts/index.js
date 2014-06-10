@@ -31,11 +31,11 @@ module.exports = {
 
     fs.writeFile(makeTitle(req.body.title, date), post, function(err) {
       if (err)
-        console.log(err);
+        res.send({error: err});
       else {
         console.log('post made. building...');
         cp.exec('jekyll build', {cwd: jekyllPath}, function(error, stdout, stderr) {
-          if (error) {
+          if (stderr || error) {
             res.send({
               error: stdout
             });
