@@ -73,7 +73,8 @@ var App = React.createClass({
       if (resp.posted)
         self.goBack();
       else {
-        self.goBack(resp.error);
+        var error = resp.jekyllError ? resp.jekyllError : JSON.stringify(resp.fileError);
+        self.goBack(error);
       }
     });
 
