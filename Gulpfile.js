@@ -46,3 +46,5 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', ['less', 'browserify', 'dev', 'watch']);
+
+gulp.task('build', ['less', 'browserify']);
