@@ -23,14 +23,27 @@ module.exports = function(req, res, next) {
 
   form.parse(req, function(err, fields, files) {
 
-    req.files = files;
-    req.body = fields;
+    if (err) {
 
-    req.body.img = slug(req.files.image.name);
+      res.send({fileError: err});
 
-    fs.rename(req.files.image.path, imagePath + req.body.img, function(err) {
-      next();
-    });
+    } else {
+
+      req.files = files;
+      req.body = fields;
+
+      req.body.img = slug(req.files.image.name);
+
+      fs.rename(req.files.image.path, imagePath + req.body.img, function(err) {
+        if (err) {
+
+          res.send({fileError: err});
+
+        } else {
+          next();
+        }
+      });
+    }
   });
 
 };
