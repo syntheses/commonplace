@@ -23,19 +23,15 @@
     "browserify": "^4.1.5"
   },
   "dependencies": {
-    "express": "^4.2.0",
     "body-parser": "^1.2.0",
+    "es6ify": "^1.2.0",
+    "express": "^4.2.0",
+    "formidable": "^1.0.14",
+    "handlebars": "^2.0.0-alpha.4",
+    "moment": "^2.6.0",
     "react": "^0.10.0",
     "reactify": "^0.13.1",
     "reqwest": "^1.1.0",
-    "handlebars": "^2.0.0-alpha.4",
-    "moment": "^2.6.0",
-    "slug": "^0.5.0",
-    "formidable": "^1.0.14"
-  },
-  "browserify": {
-    "transform": [
-      "reactify"
-    ]
+    "slug": "^0.5.0"
   }
 }
