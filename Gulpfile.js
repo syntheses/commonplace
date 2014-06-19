@@ -7,6 +7,7 @@ var es6ify = require('es6ify');
 
 var less = require('gulp-less');
 var prefix = require('gulp-autoprefixer');
+var nodemon = require('gulp-nodemon');
 
 var paths = {
   lessOutput: './less/style.less',
@@ -33,10 +34,17 @@ gulp.task('browserify', function() {
   bundleStream
     .pipe(source(paths.appJs))
     .pipe(gulp.dest('public'));
-})
+});
+
+gulp.task('dev', function () {
+  nodemon({ script: 'index.js', ext: 'js', ignore: ['js/**/*.js'] });
+});
 
 gulp.task('watch', function() {
   gulp.watch(paths.js, ['browserify']);
+  gulp.watch(paths.less, ['less']);
 });
 
-gulp.task('default', ['less']);
+gulp.task('default', ['less', 'browserify', 'dev', 'watch']);
+
+gulp.task('build', ['less', 'browserify']);
