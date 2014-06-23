@@ -26,16 +26,25 @@ module.exports = {
 
     var date = new Date();
 
-    req.body.date = moment(date).format('YYYY-MM-DD HH:MM:SS');
+    req.body.date = moment(date).format('YYYY-MM-DD HH:MM');
     var post = templates[req.body.type](req.body);
 
     fs.writeFile(makeTitle(req.body.title, date), post, function(err) {
       if (err)
-        console.log(err);
+        res.send({fileError: err});
       else {
-        console.log('post made')
+        console.log('post made. building...');
         cp.exec('jekyll build', {cwd: jekyllPath}, function(error, stdout, stderr) {
-          res.send({posted: true});
+          if (stderr) {
+            console.log(stderr);
+            res.send({
+              jekyllError: stderr
+            });
+          } else {
+            console.log('built.');
+            res.send({posted: true});
+          }
+
         });
       }
     });

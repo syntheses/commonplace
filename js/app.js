@@ -18,7 +18,8 @@ var Forms = {
 var App = React.createClass({
   getInitialState: function() {
     return {
-      type: null
+      type: null,
+      error: null
     };
   },
 
@@ -43,8 +44,12 @@ var App = React.createClass({
         var resp = JSON.parse(this.responseText);
         if (resp.posted)
           self.goBack();
+        else {
+          var error = resp.jekyllError ? resp.jekyllError : JSON.stringify(resp.fileError);
+          self.goBack(error);
+        }
       } catch (e) {
-        console.log(e);
+        self.goBack(e);
       }
 
     };
@@ -61,17 +66,25 @@ var App = React.createClass({
       url: 'posts',
       method: 'post',
       type: 'json',
-      data: data
+      data: data,
+      error: function() {
+        self.goBack('Connection error.');
+      }
     }).then(function(resp){
       if (resp.posted)
         self.goBack();
+      else {
+        var error = resp.jekyllError ? resp.jekyllError : JSON.stringify(resp.fileError);
+        self.goBack(error);
+      }
     });
 
   },
 
-  goBack: function() {
+  goBack: function(error) {
 
-    this.setState({type: null});
+    this.setState({type: null, error: error});
+
     document.body.addEventListener('animationend', function(){
       document.body.className = '';
       document.body.removeEventListener('animationend', this);
@@ -83,8 +96,13 @@ var App = React.createClass({
   render: function() {
     if (this.state.type === null) {
 
+      document.body.addEventListener('animationend', function(){
+        document.body.className = '';
+        document.body.removeEventListener('animationend', this);
+      }, true);
+
       return (
-          <Launcher handleClick={this.selectType} />
+          <Launcher handleClick={this.selectType} error={this.state.error} />
       );
 
     } else {

@@ -16,6 +16,7 @@ module.exports =
         <section className="launcher">
           <h1><b>Commonplace</b></h1>
           <span className="launcher-line"></span>
+          {this.props.error && <div className="error"><pre>{this.props.error}</pre></div>}
           <section className="launcher-btns">
             <LauncherButton text="Text" type="text" handleClick={this.handleClick} />
             <LauncherButton text="Image" type="image" handleClick={this.handleClick} />
